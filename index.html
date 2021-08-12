@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>北京时间</title>
+    <style>
+        #time {
+            font-size: 120px;
+            font-weight: 900;
+            text-align: center;
+        }
+        #date {
+            margin-top: 40px;
+            font-size: 70px;
+            font-weight: 800;
+            text-align: center;
+        }
+        #week {
+            margin-top: 20px;
+            font-size: 70px;
+            font-weight: 800;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="time">
+    </div>
+    <div id="date">
+    </div>
+    <div id="week">
+    </div>
+    <div id="info"></div>
+    <script>
+        const t = document.querySelector('#time');
+        const d = document.querySelector('#date');
+        const w = document.querySelector('#week');
+        const info = document.querySelector('#info');
+        const weekList = ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日'];
+        info.innerText = `${innerWidth},${innerHeight}`;
+        setInterval(() => {
+          const date = new Date();
+          const h = `${date.getHours()}`.padStart(2, '0');
+          const m = `${date.getMinutes()}`.padStart(2, '0');
+          t.innerText = `${h}:${m}`;
+          d.innerText = `${date.getFullYear()}年 ${date.getMonth() + 1}月${date.getDate()}日`;
+          w.innerText = weekList[date.getDay() - 1];
+        }, 1000)
+    </script>
+</body>
+</html>
