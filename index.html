@@ -8,18 +8,19 @@
     <title>北京时间</title>
     <style>
         #time {
-            font-size: 120px;
+            padding-top: 20px;
+            font-size: 140px;
             font-weight: 900;
             text-align: center;
         }
         #date {
-            margin-top: 40px;
+            margin-top: 50px;
             font-size: 70px;
             font-weight: 800;
             text-align: center;
         }
         #week {
-            margin-top: 20px;
+            margin-top: 30px;
             font-size: 70px;
             font-weight: 800;
             text-align: center;
@@ -28,27 +29,27 @@
     </style>
 </head>
 <body>
-    <div id="data">111</div>
     <div id="time">
     </div>
     <div id="date">
     </div>
     <div id="week">
     </div>
-    <div id="info"></div>
     <script>
         const t = document.getElementById('time');
         const d = document.getElementById('date');
         const w = document.getElementById('week');
-        const info = document.getElementById('info');
         const weekList = ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日'];
-        info.innerText = innerWidth + ',' + innerHeight;
+        function padTime(s) {
+          if (s.length < 2) {
+            return '0' + s
+          }
+          return s;
+        }
         setInterval(function () {
           const date = new Date();
-          // const h = `${date.getHours()}`.padStart(2, '0');
-          const h = date.getHours();
-          // const m = `${date.getMinutes()}`.padStart(2, '0');
-          const m = date.getMinutes();
+          const h = padTime(date.getHours().toString());
+          const m = padTime(date.getMinutes().toString());
           t.innerText = h + ':' + m;
           d.innerText = date.getFullYear() + '年 ' + (date.getMonth() + 1) + '月' + date.getDate() + '日';
           w.innerText = weekList[date.getDay() - 1];
