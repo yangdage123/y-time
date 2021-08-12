@@ -35,13 +35,11 @@
     </div>
     <div id="week">
     </div>
-    <div id="info"></div>
     <script>
         const t = document.getElementById('time');
         const d = document.getElementById('date');
         const w = document.getElementById('week');
         const info = document.getElementById('info');
-        info.innerText = new Date().toString();
         const weekList = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
         function padTime(s) {
           if (s.length < 2) {
@@ -49,8 +47,12 @@
           }
           return s;
         }
+        const offset = new Date().getTimezoneOffset() / 60 + 8;
         setInterval(function () {
-          const date = new Date();
+          let date = new Date();
+          if (offset) {
+            date = new Date(date.getTime() + (offset * 60 * 60 *1000));
+          }
           const h = padTime(date.getHours().toString());
           const m = padTime(date.getMinutes().toString());
           t.innerText = h + ':' + m;
