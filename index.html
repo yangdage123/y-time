@@ -28,7 +28,7 @@
     </style>
 </head>
 <body>
-    <div>111</div>
+    <div id="data">111</div>
     <div id="time">
     </div>
     <div id="date">
@@ -37,18 +37,20 @@
     </div>
     <div id="info"></div>
     <script>
-        const t = document.querySelector('#time');
-        const d = document.querySelector('#date');
-        const w = document.querySelector('#week');
-        const info = document.querySelector('#info');
+        const t = document.getElementById('time');
+        const d = document.getElementById('date');
+        const w = document.getElementById('week');
+        const info = document.getElementById('info');
         const weekList = ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日'];
-        info.innerText = `${innerWidth},${innerHeight}`;
+        info.innerText = innerWidth + ',' + innerHeight;
         setInterval(function () {
           const date = new Date();
-          const h = `${date.getHours()}`.padStart(2, '0');
-          const m = `${date.getMinutes()}`.padStart(2, '0');
-          t.innerText = `${h}:${m}`;
-          d.innerText = `${date.getFullYear()}年 ${date.getMonth() + 1}月${date.getDate()}日`;
+          // const h = `${date.getHours()}`.padStart(2, '0');
+          const h = date.getHours();
+          // const m = `${date.getMinutes()}`.padStart(2, '0');
+          const m = date.getMinutes();
+          t.innerText = h + ':' + m;
+          d.innerText = date.getFullYear() + '年 ' + (date.getMonth() + 1) + '月' + date.getDate() + '日';
           w.innerText = weekList[date.getDay() - 1];
         }, 1000)
     </script>
