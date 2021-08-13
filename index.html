@@ -48,7 +48,7 @@
           return s;
         }
         setInterval(function () {
-          let date = new Date();
+          const date = new Date();
           const h = padTime(date.getHours().toString());
           const m = padTime(date.getMinutes().toString());
           t.innerText = h + ':' + m;
