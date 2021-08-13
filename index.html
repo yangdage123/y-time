@@ -35,16 +35,17 @@
     </div>
     <div id="week">
     </div>
-    <div id="info">1112</div>
+    <div id="info">1113</div>
     <script>
         const t = document.getElementById('time');
         const d = document.getElementById('date');
         const w = document.getElementById('week');
         const info = document.getElementById('info');
         const weekList = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+        info.innerText = navigator.userAgent;
         function padTime(s) {
           if (s.length < 2) {
-            return '0' + s
+            return '0' + s;
           }
           return s;
         }
@@ -58,7 +59,7 @@
           const m = padTime(date.getMinutes().toString());
           t.innerText = h + ':' + m;
           d.innerText = date.getFullYear() + '年 ' + (date.getMonth() + 1) + '月' + date.getDate() + '日';
-          w.innerText = weekList[date.getDay() - 1];
+          w.innerText = weekList[date.getDay()];
         }, 1000)
     </script>
 </body>
