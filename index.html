@@ -49,12 +49,8 @@
           }
           return s;
         }
-        // const offset = new Date().getTimezoneOffset() / 60 + 8;
         setInterval(function () {
           let date = new Date();
-          /*if (offset) {
-            date = new Date(date.getTime() + (offset * 60 * 60 *1000));
-          }*/
           const h = padTime(date.getHours().toString());
           const m = padTime(date.getMinutes().toString());
           t.innerText = h + ':' + m;
