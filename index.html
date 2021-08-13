@@ -35,7 +35,7 @@
     </div>
     <div id="week">
     </div>
-    <div id="info">1114</div>
+    <div id="info">111</div>
     <script>
         const t = document.getElementById('time');
         const d = document.getElementById('date');
@@ -47,8 +47,12 @@
           }
           return s;
         }
+        const offset = new Date().getTimezoneOffset() / 60 + 8;
         setInterval(function () {
-          const date = new Date();
+          var date = new Date();
+          if (offset) {
+            date = new Date(date.getTime() + (offset * 60 * 60 *1000));
+          }
           const h = padTime(date.getHours().toString());
           const m = padTime(date.getMinutes().toString());
           t.innerText = h + ':' + m;
