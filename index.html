@@ -8,21 +8,21 @@
     <title>北京时间</title>
     <style>
         #time {
-            padding-top: 60px;
-            font-size: 170px;
-            font-weight: 800;
+            padding-top: 80px;
+            font-size: 200px;
+            font-weight: 700;
             text-align: center;
         }
         #date {
             margin-top: 80px;
             font-size: 70px;
-            font-weight: 500;
+            font-weight: 400;
             text-align: center;
         }
         #week {
             margin-top: 40px;
             font-size: 70px;
-            font-weight: 500;
+            font-weight: 400;
             text-align: center;
         }
     </style>
@@ -56,7 +56,7 @@
           t.innerText = h + ':' + m;
           d.innerText = date.getFullYear() + '年 ' + (date.getMonth() + 1) + '月' + date.getDate() + '日';
           w.innerText = weekList[date.getDay()];
-        }, 1000)
+        }, 60000)
     </script>
 </body>
 </html>
