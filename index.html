@@ -66,11 +66,7 @@
         info.innerText = navigator.userAgent + '\n';
         const date = updateTime();
         const time = (60 - date.getSeconds()) * 1000;
-        setTimeout(function () {
-          info.innerText = info.innerText + 'timeout\n';
-          updateTime();
-          setInterval(updateTime, 60000);
-        }, time);
+        setTimeout(updateTime, time);
     </script>
 </body>
 </html>
