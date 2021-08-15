@@ -34,10 +34,12 @@
     </div>
     <div id="week">
     </div>
+    <div id="info"></div>
     <script>
         const t = document.getElementById('time');
         const d = document.getElementById('date');
         const w = document.getElementById('week');
+        const info = document.getElementById('info');
         const weekList = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
         function padTime(s) {
           if (s.length < 2) {
@@ -49,6 +51,8 @@
 
         function updateTime() {
           var date = new Date();
+
+          info.innerText = info.innerText + 'update\n';
           if (offset) {
             date = new Date(date.getTime() + (offset * 60 * 60 *1000));
           }
@@ -59,9 +63,11 @@
           w.innerText = weekList[date.getDay()];
           return date;
         }
+        info.innerText = navigator.userAgent + '\n';
         const date = updateTime();
         const time = (60 - date.getSeconds()) * 1000;
         setTimeout(function () {
+          info.innerText = info.innerText + 'timeout\n';
           updateTime();
           setInterval(updateTime, 60000);
         }, time);
