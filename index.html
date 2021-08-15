@@ -46,7 +46,8 @@
           return s;
         }
         const offset = new Date().getTimezoneOffset() / 60 + 8;
-        setInterval(function () {
+
+        function updateTime() {
           var date = new Date();
           if (offset) {
             date = new Date(date.getTime() + (offset * 60 * 60 *1000));
@@ -56,7 +57,13 @@
           t.innerText = h + ':' + m;
           d.innerText = date.getFullYear() + '年 ' + (date.getMonth() + 1) + '月' + date.getDate() + '日';
           w.innerText = weekList[date.getDay()];
-        }, 60000)
+          return date;
+        }
+        const date = updateTime();
+        setTimeout(function () {
+          updateTime();
+          setInterval(updateTime, 60000);
+        }, (60 - date.getSeconds()) * 1000);
     </script>
 </body>
 </html>
