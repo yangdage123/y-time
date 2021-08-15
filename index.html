@@ -7,6 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>北京时间</title>
     <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
         #time {
             padding-top: 80px;
             font-size: 200px;
@@ -34,12 +38,10 @@
     </div>
     <div id="week">
     </div>
-    <div id="info"></div>
     <script>
         const t = document.getElementById('time');
         const d = document.getElementById('date');
         const w = document.getElementById('week');
-        const info = document.getElementById('info');
         const weekList = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
         function padTime(s) {
           if (s.length < 2) {
@@ -47,15 +49,11 @@
           }
           return s;
         }
-        const offset = new Date().getTimezoneOffset() / 60 + 8;
+        const utf8DiffMinutes = new Date().getTimezoneOffset() + 480;
 
         function updateTime() {
-          var date = new Date();
-
-          info.innerText = info.innerText + 'update\n';
-          if (offset) {
-            date = new Date(date.getTime() + (offset * 60 * 60 *1000));
-          }
+          const date = new Date();
+          date.setMinutes(date.getMinutes() + utf8DiffMinutes);
           const h = padTime(date.getHours().toString());
           const m = padTime(date.getMinutes().toString());
           t.innerText = h + ':' + m;
@@ -63,10 +61,13 @@
           w.innerText = weekList[date.getDay()];
           return date;
         }
-        info.innerText = navigator.userAgent + '\n';
         const date = updateTime();
         const time = (60 - date.getSeconds()) * 1000;
-        setTimeout(updateTime, time);
+        const timer = setInterval(function () {
+          clearInterval(timer);
+          updateTime();
+          setInterval(updateTime, 60000);
+        }, time);
     </script>
 </body>
 </html>
