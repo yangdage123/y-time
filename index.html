@@ -60,10 +60,11 @@
           return date;
         }
         const date = updateTime();
+        const time = (60 - date.getSeconds()) * 1000;
         setTimeout(function () {
           updateTime();
           setInterval(updateTime, 60000);
-        }, (60 - date.getSeconds()) * 1000);
+        }, time);
     </script>
 </body>
 </html>
