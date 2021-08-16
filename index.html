@@ -60,9 +60,10 @@
           date.setMinutes(date.getMinutes() + utf8DiffMinutes);
           const h = padTime(date.getHours().toString());
           const m = padTime(date.getMinutes().toString());
-          if (m % 2 === 1) {
+          if (m === '00') {
             document.body.id = 'black';
-          } else {
+          }
+          if (m === '01') {
             document.body.id = '';
           }
           t.innerText = h + ':' + m;
@@ -74,7 +75,7 @@
         const time = (60 - date.getSeconds()) * 1000;
         function calibration() {
           updateTime();
-          setInterval(updateTime, 60000);
+          setInterval('updateTime()', 60000);
         }
         setTimeout('calibration()', time);
     </script>
