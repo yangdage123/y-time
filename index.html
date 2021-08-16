@@ -11,6 +11,10 @@
             margin: 0px;
             padding: 0px;
         }
+        #black {
+            background-color: #000;
+            color: #fff;
+        }
         #time {
             padding-top: 80px;
             font-size: 200px;
@@ -56,6 +60,11 @@
           date.setMinutes(date.getMinutes() + utf8DiffMinutes);
           const h = padTime(date.getHours().toString());
           const m = padTime(date.getMinutes().toString());
+          if (m % 2 === 1) {
+            document.body.id = 'black';
+          } else {
+            document.body.id = '';
+          }
           t.innerText = h + ':' + m;
           d.innerText = date.getFullYear() + '年 ' + (date.getMonth() + 1) + '月' + date.getDate() + '日';
           w.innerText = weekList[date.getDay()];
@@ -63,11 +72,11 @@
         }
         const date = updateTime();
         const time = (60 - date.getSeconds()) * 1000;
-        const timer = setInterval(function () {
-          clearInterval(timer);
+        function calibration() {
           updateTime();
           setInterval(updateTime, 60000);
-        }, time);
+        }
+        setTimeout('calibration()', time);
     </script>
 </body>
 </html>
