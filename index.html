@@ -70,8 +70,7 @@
           w.innerText = weekList[date.getDay()];
           return date;
         }
-        const date = updateTime();
-        const time = (60 - date.getSeconds()) * 1000;
+        updateTime();
         function calibration() {
           updateTime();
           setInterval('updateTime()', 60000);
