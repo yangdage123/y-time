@@ -54,10 +54,11 @@
           return s;
         }
         const utf8DiffMinutes = new Date().getTimezoneOffset() + 480;
-
+        var time = 0;
         function updateTime() {
           const date = new Date();
           date.setMinutes(date.getMinutes() + utf8DiffMinutes);
+          time = (60 - date.getSeconds()) * 1000;
           const h = padTime(date.getHours().toString());
           const m = padTime(date.getMinutes().toString());
           if (m === '00') {
@@ -69,10 +70,7 @@
           t.innerText = h + ':' + m;
           d.innerText = date.getFullYear() + '年 ' + (date.getMonth() + 1) + '月' + date.getDate() + '日';
           w.innerText = weekList[date.getDay()];
-          return date;
         }
-        const date = updateTime();
-        const time = (60 - date.getSeconds()) * 1000;
         function calibration() {
           updateTime();
           setInterval('updateTime()', 60000);
