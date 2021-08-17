@@ -54,19 +54,27 @@
     <pre id="tips"></pre>
     <script>
       const list = [
+        '春水初生，春林初盛，\n春风十里，不如你',
+        '愿你踏遍山海，觉得人间值得',
         '草莓蓝莓今天你想我了莓',
         '记得在这杂乱的生活里，每天带点笑意',
+        '山有木兮木有枝，心悦君兮君不知',
+        '能让我狂奔的除了大雨也仅有你了',
         '我欲乘风破浪 踏遍黄沙海洋\n与其误会一场 也要不负勇往',
         '我要把所有的温柔和可爱都藏起来给你',
+        '余生再无倾城色，一草一木皆相思',
         '愿所有的不安，都是虚惊一场',
         '我想和你虚度时光\n《我想和你虚度时光》陈璧',
         '你是我的唯一热衷且坚定不移',
         '你是世界上最可爱的小星星，我爱了整个宇宙，\n只为跟你碰头',
         '保持热爱，翻越山海',
+        '与君相向转向卿，与君双栖共一生',
+        '人生从来不是活给别人看,没有人会对你的人生负责,\n仅有你自我才是自我的主角',
         '我要~你在我身旁 我要~你为我梳妆。❤️',
         '余生很贵 可别浪费 努力读书',
         '坏心情除了让自己更糟糕以外什么都不会发生',
         '最好的时光在路上，一路向阳',
+        '星光不问赶路人，时光不负有心人',
         '哪来的天生优秀，都是一步一个坑踩过来的',
         '往后余生 风雪是你 平淡是你 清贫也是你\n荣华是你 心底温柔是你 目光所致也是你',
         '一个人最好的状态就是慢慢的向你喜欢的东西靠近',
@@ -86,7 +94,7 @@
 
       function updateTips() {
         const t = Math.floor(Math.random() * list.length);
-        tips.innerHTML = list[t];
+        tips.innerHTML = list[9];
       }
       const utf8DiffMinutes = new Date().getTimezoneOffset() + 480;
       function updateTime(first) {
@@ -94,11 +102,11 @@
         date.setMinutes(date.getMinutes() + utf8DiffMinutes);
         const h = padTime(date.getHours().toString());
         const m = padTime(date.getMinutes().toString());
-        if (m === '00') {
+        if (h === '00' && m === '00') {
           document.body.id = 'black';
           updateTips();
         }
-        if (m === '01') {
+        if (h === '00' && m === '01') {
           document.body.id = '';
         }
         t.innerText = h + ':' + m;
